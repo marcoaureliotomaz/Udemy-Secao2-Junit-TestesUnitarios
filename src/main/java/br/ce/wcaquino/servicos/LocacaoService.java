@@ -7,6 +7,7 @@ import java.util.Date;
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 
 public class LocacaoService {
 	
@@ -28,7 +29,19 @@ public class LocacaoService {
 		return locacao;
 	}
 
+
 	public static void main(String[] args) {
-		
+		LocacaoService locacaoService = new LocacaoService();
+		Usuario usuario = new Usuario("Marco");
+		Filme filme = new Filme("Filme 1",2,5.0);
+
+		Locacao locacao = locacaoService.alugarFilme(usuario,filme);
+
+		System.out.println(locacao.getValor());
+		System.out.println(locacao.getDataLocacao());
+		System.out.println(locacao.getDataRetorno());
+
+
+
 	}
 }
