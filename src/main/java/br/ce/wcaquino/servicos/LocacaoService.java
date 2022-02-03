@@ -1,16 +1,15 @@
 package br.ce.wcaquino.servicos;
 
-import static br.ce.wcaquino.utils.DataUtils.adicionarDias;
-
-import java.util.Date;
-
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
 import br.ce.wcaquino.utils.DataUtils;
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Date;
+
+import static br.ce.wcaquino.utils.DataUtils.adicionarDias;
 
 public class LocacaoService {
 	
@@ -32,20 +31,16 @@ public class LocacaoService {
 		return locacao;
 	}
 
-	@Test
-	public  void teste() {
+	public static void main(String[] args) {
 		LocacaoService locacaoService = new LocacaoService();
 		Usuario usuario = new Usuario("Marco");
 		Filme filme = new Filme("Filme 1",2,5.0);
 
 		Locacao locacao = locacaoService.alugarFilme(usuario,filme);
 
-		Assert.assertTrue(locacao.getValor()==5.0);
-		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(),new Date()));
-		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
-
-
-
+		System.out.println(locacao.getValor()==5.0);
+		System.out.println(DataUtils.isMesmaData(locacao.getDataLocacao(),new Date()));
+		System.out.println(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
 
 	}
 }
