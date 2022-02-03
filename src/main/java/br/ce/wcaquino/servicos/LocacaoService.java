@@ -9,6 +9,8 @@ import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
 import br.ce.wcaquino.utils.DataUtils;
 import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class LocacaoService {
 	
@@ -30,17 +32,17 @@ public class LocacaoService {
 		return locacao;
 	}
 
-
-	public static void main(String[] args) {
+	@Test
+	public  void teste() {
 		LocacaoService locacaoService = new LocacaoService();
 		Usuario usuario = new Usuario("Marco");
 		Filme filme = new Filme("Filme 1",2,5.0);
 
 		Locacao locacao = locacaoService.alugarFilme(usuario,filme);
 
-		System.out.println(locacao.getValor()==5.0);
-		System.out.println(DataUtils.isMesmaData(locacao.getDataLocacao(),new Date()));
-		System.out.println(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
+		Assert.assertTrue(locacao.getValor()==5.0);
+		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(),new Date()));
+		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
 
 
 
