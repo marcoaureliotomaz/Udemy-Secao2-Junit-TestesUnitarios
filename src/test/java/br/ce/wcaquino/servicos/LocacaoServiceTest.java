@@ -11,14 +11,14 @@ import java.util.Date;
 
 public class LocacaoServiceTest {
     @Test
-    public  void teste() {
+    public  void variostestes() {
         LocacaoService locacaoService = new LocacaoService();
         Usuario usuario = new Usuario("Marco");
         Filme filme = new Filme("Filme 1",2,5.0);
 
         Locacao locacao = locacaoService.alugarFilme(usuario,filme);
 
-        Assert.assertTrue(locacao.getValor()==5.0);
+        Assert.assertEquals(5.00,locacao.getValor(),0.01);
         Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(),new Date()));
         Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
 
